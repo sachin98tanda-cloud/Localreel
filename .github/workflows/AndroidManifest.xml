@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!--
+        READ_EXTERNAL_STORAGE  → Android 6–12 (API 23–32)
+        READ_MEDIA_VIDEO       → Android 13+ (API 33+)
+        Both declared; the OS only grants the one that applies to the running version.
+    -->
+    <uses-permission
+        android:name="android.permission.READ_EXTERNAL_STORAGE"
+        android:maxSdkVersion="32" />
+    <uses-permission
+        android:name="android.permission.READ_MEDIA_VIDEO"
+        android:minSdkVersion="33" />
+
+    <application
+        android:name=".LocalReelsApp"
+        android:allowBackup="true"
+        android:label="LocalReels"
+        android:theme="@style/Theme.LocalReels"
+        android:supportsRtl="true">
+
+        <!--
+            android:exported="true" is REQUIRED on Android 12+ (API 31+)
+            for any activity with an intent-filter. Missing this causes install failure.
+        -->
+        <activity
+            android:name=".MainActivity"
+            android:exported="true"
+            android:windowSoftInputMode="adjustResize"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+    </application>
+
+</manifest>
